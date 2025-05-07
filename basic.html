@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azanaw Page</title>
+    <style>
+        body {
+            background-color: #e0f7fa; /* Light aqua */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00796b;
+            margin-top: 40px;
+        }
+
+        .document {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 200px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="button"] {
+            background-color: #00796b;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="button"]:hover {
+            background-color: #004d40;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hi, Welcome to this Page</h1>
+    <div class="document">
+        <form action="">
+            <label for="username">User Name</label>
+            <input type="text" name="username" id="username" placeholder="Enter the user name">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter the password">
+
+            <input type="button" value="Login">
+            forget password?<a href="log.html">clicked</a>
+        </form>
+    </div>
+</body>
+</html>

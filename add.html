@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Azanaw | DBU IT Student</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      scroll-behavior: smooth;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    header {
+      background-color: #00796b;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 2s forwards 0.5s;
+    }
+
+    nav {
+      background-color: #004d40;
+      text-align: center;
+      padding: 10px 0;
+      opacity: 0;
+      animation: fadeIn 2s forwards 1s;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+      display: inline-block;
+      opacity: 0;
+      animation: fadeIn 2s forwards 1.5s;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      animation: slide 0.3s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translateY(10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      opacity: 0;
+      animation: fadeIn 2s forwards 2s;
+    }
+
+    .card {
+      background-color: white;
+      margin-bottom: 20px;
+      padding: 20px; 
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      opacity: 0;
+      animation: fadeIn 2s forwards 2.5s;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .profile img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #00796b;
+    }
+
+    .download-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #00796b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .download-btn:hover {
+      background-color: #004d40;
+    }
+
+    .chat-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      height: 300px;
+      overflow-y: scroll;
+      margin-top: 20px;
+    }
+
+    .message {
+      margin-bottom: 15px;
+    }
+
+    .message-user {
+      background-color: #00796b;
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 70%;
+      margin-left: 30px;
+    }
+
+    .message-admin {
+      background-color: #004d40;
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 70%;
+      margin-left: 30px;
+    }
+
+    .message-input {
+      width: 80%;
+      padding: 10px;
+      margin-right: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .send-btn {
+      background-color: #00796b;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s;
+    }
+
+    .send-btn:hover {
+      background-color: #004d40;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #004d40;
+      color: white;
+      margin-top: 40px;
+      opacity: 0;
+      animation: fadeIn 2s forwards 4s;
+    }
+
+    a {
+      color: #00796b;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Azanaw | IT Student</h1>
+    <p>Debre Birhan University - Department of Information Technology</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#hobbies">Hobbies</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#contact">Contact</a>
+    <a href="#chat">Chat</a>
+  </nav>
+
+  <section id="about" class="card">
+    <h2>About Me</h2>
+    <div class="profile">
+      <img src="6037420259834709752.jpg" alt="Azanaw's Photo" />
+      <p>Hello! I'm <strong>Azanaw</strong>, an enthusiastic IT student at <strong>Debre Birhan University</strong>. I enjoy building creative web apps and solving real-life problems with code.</p>
+    </div>
+    <a href="Azanaw_CV.pdf" class="download-btn" download>Download My CV</a>
+  </section>
+
+  <section id="skills" class="card">
+    <h2>My Skills</h2>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>PHP & MySQL</li>
+      <li>Responsive Web Design</li>
+      <li>Python Basics</li>
+      <li>Team Collaboration</li>
+    </ul>
+  </section>
+
+  <!-- Chat Section -->
+  <section id="chat" class="card">
+    <h2>Chat</h2>
+
+    <!-- Chat Box -->
+    <div class="chat-box" id="chatBox">
+      <!-- Messages will appear here -->
+    </div>
+
+    <!-- Input & Send Button -->
+    <div>
+      <input type="text" id="messageInput" class="message-input" placeholder="Type your message...">
+      <button class="send-btn" id="sendBtn">Send</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Azanaw | IT Student @ DBU. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Messaging functionality
+    const chatBox = document.getElementById("chatBox");
+    const messageInput = document.getElementById("messageInput");
+    const sendBtn = document.getElementById("sendBtn");
+
+    // Sample admin message
+    const adminMessage = 'Hello, welcome to the system. How can I help you today?';
+
+    // Display initial admin message
+    const adminMessageElement = document.createElement("div");
+    adminMessageElement.classList.add("message", "message-admin");
+    adminMessageElement.textContent = adminMessage;
+    chatBox.appendChild(adminMessageElement);
+
+    // Send message handler
+    sendBtn.addEventListener("click", function() {
+      const userMessage = messageInput.value;
+      if (userMessage.trim() !== "") {
+        // Display user message
+        const userMessageElement = document.createElement("div");
+        userMessageElement.classList.add("message", "message-user");
+        userMessageElement.textContent = userMessage;
+        chatBox.appendChild(userMessageElement);
+
+        // Clear input
+        messageInput.value = "";
+
+        // Scroll to the bottom
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // Optionally, auto reply from admin after a delay
+        setTimeout(() => {
+          const adminReply = 'Thank you for your message. We are looking into it.';
+          const adminMessageElement = document.createElement("div");
+          adminMessageElement.classList.add("message", "message-admin");
+          adminMessageElement.textContent = adminReply;
+          chatBox.appendChild(adminMessageElement);
+
+          // Scroll to the bottom
+          chatBox.scrollTop = chatBox.scrollHeight;
+        }, 2000);
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Azanaw | DBU IT Student</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #00796b;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    nav {
+      background-color: #004d40;
+      text-align: center;
+      padding: 10px 0;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00bfae;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      opacity: 0;
+      animation: fadeInSection 2s forwards;
+    }
+
+    .card {
+      background-color: white;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .profile img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #00796b;
+    }
+
+    .download-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #00796b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background-color: #004d40;
+    }
+
+    ul {
+      list-style: square;
+      padding-left: 20px;
+    }
+
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .project {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-left: 5px solid #00796b;
+      border-radius: 8px;
+      animation: slideIn 1s ease-in-out;
+    }
+
+    .project h3 {
+      margin-top: 0;
+      color: #004d40;
+    }
+
+    .project-btn {
+      display: inline-block;
+      margin-top: 10px;
+      margin-right: 10px;
+      padding: 8px 12px;
+      background-color: #00796b;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .project-btn:hover {
+      background-color: #004d40;
+    }
+
+    #searchInput {
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: border-color 0.3s ease;
+    }
+
+    #searchInput:focus {
+      border-color: #00796b;
+    }
+
+    form input, form textarea {
+      width: 80%; /* Reduced width */
+      padding: 8px; /* Reduced padding */
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: border-color 0.3s ease;
+    }
+
+    form input:focus, form textarea:focus {
+      border-color: #00796b;
+    }
+
+    form button {
+      background-color: #00796b;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #004d40;
+    }
+
+    #messageBox {
+      padding: 10px;
+      background-color: #d4edda;
+      color: #155724;
+      border-radius: 5px;
+      display: none;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #004d40;
+      color: white;
+      margin-top: 40px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    a {
+      color: #00796b;
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInSection {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Azanaw | IT Student</h1>
+    <p>Debre Birhan University - Department of Information Technology</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#hobbies">Hobbies</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about" class="card">
+    <h2>About Me</h2>
+    <div class="profile">
+      <img src="6037420259834709752.jpg" alt="Azanaw's Photo" />
+      <p>Hello! I'm <strong>Azanaw</strong>, an enthusiastic IT student at <strong>Debre Birhan University</strong>. I enjoy building creative web apps and solving real-life problems with code.</p>
+    </div>
+    <a href="Azanaw_CV.pdf" class="download-btn" download>Download My CV</a>
+  </section>
+
+  <section id="skills" class="card">
+    <h2>My Skills</h2>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>PHP & MySQL</li>
+      <li>Responsive Web Design</li>
+      <li>Python Basics</li>
+      <li>Team Collaboration</li>
+    </ul>
+  </section>
+
+  <section id="projects" class="card">
+    <h2>My Projects</h2>
+
+    <input type="text" id="searchInput" placeholder="Search projects...">
+
+    <div class="project-list">
+      <div class="project">
+        <h3>Student Login System</h3>
+        <p>A PHP and JavaScript-based login system with session management and error handling.</p>
+        <a href="#" class="project-btn">View Project</a>
+        <a href="https://github.com/azanaw/student-login" class="project-btn" target="_blank">GitHub</a>
+      </div>
+
+      <div class="project">
+        <h3>Portfolio Website</h3>
+        <p>My personal website built with HTML, CSS, and JavaScript to showcase my projects.</p>
+        <a href="#" class="project-btn">View Website</a>
+        <a href="https://github.com/azanaw/portfolio" class="project-btn" target="_blank">GitHub</a>
+      </div>
+
+      <div class="project">
+        <h3>Simple Calculator</h3>
+        <p>A calculator built with JavaScript for basic arithmetic operations.</p>
+        <a href="#" class="project-btn">Try Calculator</a>
+        <a href="https://github.com/azanaw/calculator" class="project-btn" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="hobbies" class="card">
+    <h2>My Hobbies</h2>
+    <ul>
+      <li>Coding and building small tools</li>
+      <li>Exploring new tech on YouTube</li>
+      <li>Reading tech blogs</li>
+      <li>Playing football and chess</li>
+    </ul>
+  </section>
+
+  <section id="achievements" class="card">
+    <h2>Achievements</h2>
+    <ul>
+      <li>Top 5 in DBU IT Coding Challenge (2024)</li>
+      <li>Built a university feedback system prototype</li>
+      <li>Completed online certifications in web development</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="card">
+    <h2>Contact Me</h2>
+    <form id="contactForm">
+      <label for="name">Your Name</label><br>
+      <input type="text" id="name" required /><br>
+
+      <label for="email">Your Email</label><br>
+      <input type="email" id="email" required /><br>
+
+      <label for="message">Message</label><br>
+      <textarea id="message" rows="4" required></textarea>
+
+      <button type="submit">Send Message</button>
+      <div id="messageBox">✅ Thank you! Your message has been sent.</div>
+    </form>
+
+    <p>Email: <a href="mailto:azanaw.dbu@example.com">azanaw.dbu@example.com</a></p>
+    <p>GitHub: <a href="https://github.com/azanaw" target="_blank">github.com/azanaw</a></p>
+    <p>Location: Debre Birhan University, Ethiopia</p>
+     <table><ul>
+      <li>Name</li>
+      <li>age</li>
+      <li>address</li>
+     </ul>
+    </table>
+
+
+
+
+
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Azanaw | IT Student @ DBU. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Project Filter
+    const searchInput = document.getElementById("searchInput");
+    const projects = document.querySelectorAll(".project");
+    searchInput.addEventListener("input", () => {
+      const value = searchInput.value.toLowerCase();
+      projects.forEach(project => {
+        const isVisible = project.textContent.toLowerCase().includes(value);
+        project.style.display = isVisible ? "block" : "none";
+      });
+    });
+
+    // Contact Form Handler
+    const contactForm = document.getElementById("contactForm");
+    const messageBox = document.getElementById("messageBox");
+    contactForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      messageBox.style.display = "block";
+      contactForm.reset();
+      setTimeout(() => messageBox.style.display = "none", 4000);
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

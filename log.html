@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <style>
+        body {
+            background-color: #fce4ec;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .reset-box {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #ad1457;
+        }
+
+        label,
+        input {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        input[type="email"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            background-color: #ad1457;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #880e4f;
+        }
+    </style>
+</head>
+<body>
+    <div class="reset-box">
+        <h2>Forgot Password</h2>
+        <form>
+            <label for="email">Enter your email:</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <input type="submit" value="Send Reset Link">
+        </form>
+    </div>
+</body>
+</html>

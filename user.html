@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banking System</title>
+   
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+
+        
+      }
+      header {
+        background-color: #007bff;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+ 
+        position: fixed;
+        width: 100%;
+        top: 0;
+     
+      }
+      header img {
+        height: 100px;
+        width: 200px;
+        margin-right: 10px;
+      }
+      .bank-container {
+        background-color: #fff;
+        padding: 30px;
+       
+        width: 400px;
+      }
+      
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .account-info {
+        text-align: center;
+
+      }
+
+      .transaction {
+        margin-bottom: 20px;
+        display: none; /* Hide inputs initially */
+      }
+
+      .transaction h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .transaction input {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+
+      .transaction button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .transaction button:hover {
+        background-color: #0056b3;
+      }
+
+      .error-message {
+        color: red;
+        font-size: 14px;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .action-button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 10px;
+      }
+
+      .action-button:hover {
+        background-color: #218838;
+      }
+      footer {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+
+      footer p {
+        margin: 0;
+        font-size: 12px;
+      }
+      .back-button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      .back-button:hover {
+        background-color: #1b155a;
+      }
+
+      .account-button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 10px;
+      }
+
+      .account-button:hover {
+        background-color: #0056b3;
+      }
+
+      .account-balance-display {
+        display: none;
+        text-align: center;
+        font-size: 18px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="images/CBE logo.jfif" alt="CBE Logo" />
+      <h1>Welcome to Commercial Bank of Ethiopia</h1>
+    </header>
+    <div class="bank-container">
+      <h2>Banking System</h2>
+
+      <div class="account-info">
+        <!-- My Account Button -->
+        <button class="account-button" onclick="toggleAccountBalance()">
+          My Account
+        </button>
+        <div id="account-balance-display" class="account-balance-display">
+          <strong
+            >Account Balance: ETB <span id="account-balance">1000</span></strong
+          >
+          <!-- Back button for My Account -->
+          <button class="back-button" onclick="backToMenu()">Back</button>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <!-- Action buttons that will be removed once clicked -->
+        <button class="action-button" onclick="showDeposit()">Deposit</button>
+        <button class="action-button" onclick="showWithdraw()">Withdraw</button>
+        <button class="action-button" onclick="showTransfer()">Transfer</button>
+      </div>
+
+      <div class="transaction" id="deposit-form">
+        <h3>Deposit</h3>
+        <input
+          type="number"
+          id="deposit-amount"
+          placeholder="Enter amount to deposit"
+        />
+        <button onclick="deposit()">Deposit</button>
+        <button class="back-button" onclick="backToMenu()">Back</button>
+      </div>
+
+      <div class="transaction" id="withdraw-form">
+        <h3>Withdraw</h3>
+        <input
+          type="number"
+          id="withdraw-amount"
+          placeholder="Enter amount to withdraw"
+        />
+        <button onclick="withdraw()">Withdraw</button>
+        <button class="back-button" onclick="backToMenu()">Back</button>
+      </div>
+
+      <div class="transaction" id="transfer-form">
+        <h3>Transfer</h3>
+        <input
+          type="number"
+          id="transfer-amount"
+          placeholder="enter  Account number"
+        
+        />
+        <input
+          type="text"
+          id="transfer-to"
+          placeholder="Enter amount to transfer"
+        />
+        <button onclick="transfer()">Transfer</button>
+        <button class="back-button" onclick="backToMenu()">Back</button>
+      </div>
+
+      <p id="error-message" class="error-message"></p>
+    </div>
+    <footer>
+      <p>&copy; 2025 Commercial Bank of Ethiopia. All rights reserved.</p>
+    </footer>
+    <script>
+      // Initial account balance
+      let accountBalance = 1000;
+
+      // Function to update the account balance on the page
+      function updateBalance() {
+        document.getElementById("account-balance").textContent = accountBalance;
+      }
+
+      // Function to toggle account balance visibility
+      function toggleAccountBalance() {
+        const balanceDisplay = document.getElementById(
+          "account-balance-display"
+        );
+        const actionButtons = document.querySelector(".action-buttons");
+
+        // Hide action buttons and show account balance when "My Account" is clicked
+        balanceDisplay.style.display = "block";
+        actionButtons.style.display = "none";
+      }
+
+      // Functions to show the input fields for each transaction
+      function showDeposit() {
+        document.getElementById("deposit-form").style.display = "block";
+        hideActionButtons();
+      }
+
+      function showWithdraw() {
+        document.getElementById("withdraw-form").style.display = "block";
+        hideActionButtons();
+      }
+
+      function showTransfer() {
+        document.getElementById("transfer-form").style.display = "block";
+        hideActionButtons();
+      }
+
+      // Function to hide action buttons
+      function hideActionButtons() {
+        document.querySelector(".action-buttons").style.display = "none";
+      }
+
+      // Function to show action buttons (back to menu)
+      function backToMenu() {
+        // Hide all transaction forms
+        document.getElementById("deposit-form").style.display = "none";
+        document.getElementById("withdraw-form").style.display = "none";
+        document.getElementById("transfer-form").style.display = "none";
+
+        // Show action buttons again
+        document.querySelector(".action-buttons").style.display = "block";
+
+        // Hide account balance view
+        document.getElementById("account-balance-display").style.display =
+          "none";
+      }
+
+      // Function to handle deposit
+      function deposit() {
+        const depositAmount = parseFloat(
+          document.getElementById("deposit-amount").value
+        );
+        const errorMessage = document.getElementById("error-message");
+
+        // Clear any previous error message
+        errorMessage.textContent = "";
+
+        if (isNaN(depositAmount) || depositAmount <= 0) {
+          document.getElementById("error-message").innerHTML = "Please enter a valid amount to deposit.";
+         
+          return;
+        }
+
+        // Deposit the amount
+        accountBalance += depositAmount;
+        updateBalance();
+
+        // Clear the input field
+        document.getElementById("deposit-amount").value = "";
+      }
+
+      // Function to handle withdrawal
+      function withdraw() {
+        const withdrawAmount = parseFloat(
+          document.getElementById("withdraw-amount").value
+        );
+        const errorMessage = document.getElementById("error-message");
+
+        // Clear any previous error message
+        errorMessage.textContent = "";
+
+        if (isNaN(withdrawAmount) || withdrawAmount <= 0) {
+          errorMessage.textContent = "Please enter a valid amount to withdraw.";
+          return;
+        }
+
+        if (withdrawAmount > accountBalance) {
+          errorMessage.textContent = "Insufficient funds.";
+          return;
+        }
+
+        // Withdraw the amount
+        accountBalance -= withdrawAmount;
+        updateBalance();
+
+        // Clear the input field
+        document.getElementById("withdraw-amount").value = "";
+      }
+
+      // Function to handle transfer
+      function transfer() {
+        const transferAmount = parseFloat(
+          document.getElementById("transfer-amount").value
+        );
+        const transferTo = document.getElementById("transfer-to").value.trim();
+        const errorMessage = document.getElementById("error-message");
+
+        // Clear any previous error message
+        errorMessage.textContent = "";
+
+        if (isNaN(transferAmount) || transferAmount <= 0) {
+          errorMessage.textContent = "Please enter a valid amount to transfer.";
+          return;
+        }
+
+        if (!transferTo) {
+          errorMessage.textContent = "Please enter a recipient username.";
+          return;
+        }
+
+        if (transferAmount > accountBalance) {
+          errorMessage.textContent = "Insufficient funds for transfer.";
+          return;
+        }
+
+        // Transfer the amount (this is simulated)
+        accountBalance -= transferAmount;
+        updateBalance();
+
+        // Show success message
+        alert(
+          `Successfully transferred ETB ${transferAmount} to ${transferTo}.`
+        );
+
+        // Clear the input fields
+        document.getElementById("transfer-amount").value = "";
+        document.getElementById("transfer-to").value = "";
+      }
+    </script>
+  </body>
+</html>

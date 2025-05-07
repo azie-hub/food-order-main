@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Banking System</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;   
+        margin: 0;
+      
+      }
+
+      header {
+        background-color: #007bff;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+  
+        width: 100%;
+      
+      }
+      header img {
+        height: 100px;
+        width: 200px;
+        margin-right: 10px;
+      }
+
+      .admin-container {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 15px;
+      
+        width: 400px;
+        margin-top: 60px;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .form-container {
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .form-container h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .form-container input {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+        margin-bottom: 10px;
+
+      }
+
+    
+      .form-container button {
+       
+        padding: 12px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+    
+      }
+
+      .form-container button:hover {
+        background-color: #348f74;
+       
+      }
+
+      .error-message {
+        color: red;
+        font-size: 14px;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      footer p {
+        font-size: 14px;
+        text-align: center;
+      }
+
+      footer {
+        background-color: #007bff;
+        color: white;
+        padding: 0px 0;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+
+      #button-container button {
+        padding: 15px 30px;
+        background: linear-gradient(45deg, #007bff, #0056b3);
+        color: white;
+        border: none;
+        border-radius: 25px;
+        margin: 10px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      #button-container button:hover {
+        background: linear-gradient(45deg, #0056b3, #003366);
+        transform: translateY(-4px);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="images/CBE logo.jfif" alt="CBE Logo" />
+      <h1>Welcome to Commercial Bank of Ethiopia</h1>
+    </header>
+
+    <div id="button-container" style="margin-top: 20px; text-align: center">
+      <h2 style="color: blueviolet">The bank that always relies on!</h2>
+      <button onclick="showForm('register-form')">Register User</button>
+      <button onclick="showForm('search-form')">Search User</button>
+      <button onclick="showForm('delete-form')">Delete User</button>
+    </div>
+
+    <form action="test.php" method="post"><div class="admin-container">
+      <div id="register-form" class="form-container">
+        <h3>Register New User</h3>
+        <input type="text" id="reg-name" placeholder="First Name" />
+        <input type="text" id="reg-lastname" placeholder="Last Name" />
+        <input type="number" id="reg-age" placeholder="Age" />
+        <input type="text" id="reg-address" placeholder="Address" />
+        <input type="text" id="reg-phone" placeholder="Phone Number" />
+        <input type="number" id="reg-balance" placeholder="Initial Balance" />
+        <button onclick="registerUser()">Register User</button>
+        <button onclick="backToMenu()">Back</button>
+      </div>
+    </form>
+
+      <div id="search-form" class="form-container">
+        <h3>Search User by Account</h3>
+        <input type="text" id="search-account" placeholder="Enter Account Number" />
+        <button onclick="searchUser()">Search User</button>
+        <button onclick="backToMenu()">Back</button>
+        <p id="search-result"></p>
+      </div>
+
+      <div id="delete-form" class="form-container">
+        <h3>Delete User by Account</h3>
+        <input type="text" id="delete-account" placeholder="Enter Account Number" />
+        <button onclick="deleteUser()">Delete User</button>
+        <button onclick="backToMenu()">Back</button>
+        <p id="delete-result"></p>
+      </div>
+
+      <p id="error-message" class="error-message"></p>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Commercial Bank of Ethiopia. All rights reserved.</p>
+    </footer>
+
+    <script>
+      let users = [
+        { account: "001", name: "John", lastname: "Doe", age: 30, address: "123 Main St", phone: "123-456-7890", balance: 1000 },
+      ];
+
+      function showForm(formId) {
+        document.getElementById("button-container").style.display = "none";
+        document.querySelectorAll(".form-container").forEach((form) => form.style.display = "none");
+        document.getElementById(formId).style.display = "block";
+      }
+
+      function backToMenu() {
+        document.getElementById("button-container").style.display = "block";
+        document.querySelectorAll(".form-container").forEach((form) => form.style.display = "none");
+      }
+
+      function registerUser() {
+        const name = document.getElementById("reg-name").value.trim();
+        const lastname = document.getElementById("reg-lastname").value.trim();
+        const age = document.getElementById("reg-age").value.trim();
+        const address = document.getElementById("reg-address").value.trim();
+        const phone = document.getElementById("reg-phone").value.trim();
+        const balance = document.getElementById("reg-balance").value.trim();
+
+        if (!name || !lastname || !age || !address || !phone || !balance) {
+          alert("Please fill out all fields!");
+          return;
+        }
+
+        const account = "00" + (users.length + 1).toString().padStart(3, "0");
+        users.push({ account, name, lastname, age, address, phone, balance: parseFloat(balance) });
+
+        alert(`User registered with account number: ${account}`);
+        backToMenu();
+      }
+
+    function searchUser() {
+        const account = document.getElementById("search-account").value.trim();
+        const resultText = document.getElementById("search-result");
+
+        if (!account) {
+          resultText.textContent = "Please enter an account number!";
+          return;
+        }
+
+        const user = users.find((user) => user.account === account);
+
+        if (user) {
+          resultText.textContent = `Found User: ${user.name} ${user.lastname}, Age: ${user.age}, Address: ${user.address}, Phone: ${user.phone}, Balance: $${user.balance}`;
+        } else {
+          resultText.textContent = "No user found with that account number.";
+        }
+      }
+
+      function deleteUser() {
+        const account = document.getElementById("delete-account").value.trim();
+        const resultText = document.getElementById("delete-result");
+
+        if (!account) {
+          resultText.textContent = "Please enter an account number!";
+          return;
+        }
+
+        const index = users.findIndex((user) => user.account === account);
+
+        if (index !== -1) {
+          users.splice(index, 1);
+          resultText.textContent = `User with account number ${account} has been deleted.`;
+        } else {
+          resultText.textContent = "No user found with that account number.";
+        }
+        document.getElementById("delete-account").value = "";
+      }
+
+
+    </script>
+  </body>
+</html>
